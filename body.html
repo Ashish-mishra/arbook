@@ -1,0 +1,101 @@
+
+<!-- Copyright (c) 2025 8th Wall, Inc. -->
+<!-- body.html is optional; elements will be added to your html body after app.js is loaded. -->
+
+<!-- Add the tap-place component to the scene so it has an effect -->
+<a-scene
+  xrextras-gesture-detector
+  landing-page
+  xrextras-loading
+  xrextras-runtime-error
+  renderer="colorManagement:true, webgl2: true;"
+  xrweb="disableWorldTracking: true, allowedDevices: any">
+  <a-camera
+    id="camera"
+    position="0 15 15"
+    raycaster="objects: .cantap"
+    cursor="
+      fuse: false;
+      rayOrigin: mouse;">
+  </a-camera>
+
+  <a-entity
+    light="
+      type: directional;
+      shadowBias: -0.0001
+      intensity: 0.65;
+      castShadow: true;
+      shadowMapHeight:2048;
+      shadowMapWidth:2048;
+      shadowCameraTop: 50;
+      shadowCameraBottom: -50;
+      shadowCameraRight: 50;
+      shadowCameraLeft: -50;
+      target: #camera"
+    xrextras-attach="target: camera; offset: 8 15 4"
+    position="1 4.3 2.5"
+    shadow>
+  </a-entity>
+
+  <a-light type="ambient" intensity="0.4"></a-light>
+
+  <xrextras-named-image-target name="coverpage" scene-handler>
+    <audio id="coverpage-audio" class="scene-audio" src="assets/audio/scene1-coverpage.wav" autoplay="" muted="" playsinline=""></audio>
+  </xrextras-named-image-target>
+
+  <xrextras-named-image-target name="intro_scene" scene-handler>
+    <audio id="intro-audio" class="scene-audio" src="assets/audio/scene2_intros.wav"></audio>
+    <a-entity
+      id="hare-intro"
+      class="scene-entity"
+      gltf-model="assets/3d-models/rabbit_waving.glb"></a-entity>
+    <a-entity
+      id="tortoise-intro"
+      class="scene-entity"
+      gltf-model="assets/3d-models/turtle_waving.glb"></a-entity>
+  </xrextras-named-image-target>
+
+  <xrextras-named-image-target name="racing_track" scene-handler>
+    <audio id="race-audio" class="scene-audio" src="assets/audio/scene3-race_starts.wav"></audio>
+    <audio id="race-pistol-shot" class="scene-audio" src="assets/audio/pistol-shot.mp3"></audio>
+    <a-entity id="rabbit-model" class="scene-entity"> </a-entity>
+    <a-entity id="turtle-model" class="scene-entity"> </a-entity>
+    </a-box>
+  </xrextras-named-image-target>
+
+  <xrextras-named-image-target name="sleeping_tree" scene-handler>
+      <audio id="sleep-audio" class="scene-audio" src="assets/audio/scene4-sleeping_hare.wav"></audio>
+      <a-entity id="hare-sleeping" class="scene-entity"></a-entity>
+      <a-entity id="hare-passing" class="scene-entity"></a-entity>
+      <a-entity id="turtle-passing" class="scene-entity" gltf-model="assets/3d-models/turtle_crawl.glb"></a-entity>
+    </xrextras-named-image-target>
+
+  <xrextras-named-image-target name="finish_line" scene-handler>
+    <audio id="crowd-cheer" class="scene-audio" src="assets/audio/crowd-cheer.wav"></audio>
+    <audio id="fireworks" class="scene-audio" src="assets/audio/fireworks-pop-pop-crackle.wav"></audio>
+
+    <audio id="tortoise-approaching" class="scene-audio" src="assets/audio/scene5-_tortoise_approaching.wav"></audio>
+    <audio id="victory" class="scene-audio" src="assets/audio/scene5-victory.wav"></audio>
+      <a-entity id="turtle-crawl" class="scene-entity" gltf-model="assets/3d-models/turtle_crawl.glb"></a-entity>
+      <a-entity id="turtle-dancing" class="scene-entity" gltf-model="assets/3d-models/turtle_dance.glb"></a-entity>
+      <a-entity id="bear-dancing" class="scene-entity" gltf-model="assets/3d-models/bear_victory.glb"></a-entity>
+      <a-entity id="piglet-dancing" class="scene-entity" gltf-model="assets/3d-models/piglet_victory.glb"></a-entity>
+      <a-entity id="panda-dancing" class="scene-entity" gltf-model="assets/3d-models/panda_victory.glb"></a-entity>
+      <a-entity id="tiger-dancing" class="scene-entity" gltf-model="assets/3d-models/tiger_victory.glb"></a-entity>
+
+      <a-entity id="hare-sad" class="scene-entity"></a-entity>
+
+  </xrextras-named-image-target>
+
+  <!-- <div id="log-overlay" style="z-index: 2">
+    <p id="logContainer">Default</p>
+  </div> -->
+
+  <a-box
+    id="ground"
+    scale="1000 2 1000"
+    position="0 -1 0"
+    material="shader: shadow; transparent: true; opacity: 0.4"
+    shadow>
+  </a-box>
+</a-scene>
